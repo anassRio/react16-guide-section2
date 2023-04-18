@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Fragment } from "react";
+import Membre from "./components/Membre";
 
-function App() {
+function App(props) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // utilisé le Fragment pour envelopper le HTML a render
+    <Fragment>
+      <div className="App">
+        <h1>{props.title}</h1>
+        <h1>React App</h1>
+        <Membre nom="Anass" test="test" />
+        <Membre nom="Hajar" children="Je suis la Femme" />
+        <Membre nom="Floky">
+          <h3>Je suis un chat</h3>
+        </Membre>
+      </div>
+    </Fragment>
   );
 }
 
