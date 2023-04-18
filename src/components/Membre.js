@@ -9,7 +9,12 @@ const Membre = () => {
 const Membre = ({ nom, age, children }) => {
   return (
     <Fragment>
-      <h2>
+      <h2
+        style={{
+          backgroundColor: age < 10 ? "yellow" : "purple",
+          color: "white",
+        }}
+      >
         {nom.toLocaleUpperCase()} : {age}
       </h2>
       {children}
