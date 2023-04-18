@@ -6,10 +6,12 @@ const Membre = () => {
 };
 */
 
-const Membre = ({ nom, children }) => {
+const Membre = ({ nom, age, children }) => {
   return (
     <Fragment>
-      <h2>Membre de ma famille : {nom.toLocaleUpperCase()}</h2>
+      <h2>
+        {nom.toLocaleUpperCase()} : {age}
+      </h2>
       {children}
     </Fragment>
   );
