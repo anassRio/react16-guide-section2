@@ -20,16 +20,44 @@ const famille = {
 
 function App(props) {
   const [state, setState] = useState({ famille });
+
   const handleClickVieillir = (num) => {
     const famille = { ...state.famille };
     famille.membre1.age += num;
     setState({ famille });
   };
+
+  const handleChangeName = (event) => {
+    const famille = { ...state.famille };
+    const nom = event.target.value;
+    famille.membre1.nom = nom;
+    setState({ famille });
+  };
+
+  const handelChangeAge = (event) => {
+    const famille = { ...state.famille };
+    const age = parseInt(event.target.value);
+    famille.membre1.age = age;
+    setState({ famille });
+  };
+
   return (
     // utilisé le Fragment pour envelopper le HTML a render
     <Fragment>
       <div className="App">
         <h1>{props.title}</h1>
+
+        <input
+          value={state.famille.membre1.nom}
+          onChange={handleChangeName}
+          type="text"
+        />
+
+        <input
+          value={state.famille.membre1.age}
+          onChange={handelChangeAge}
+          type="number"
+        ></input>
         <Membre
           nom={state.famille.membre1.nom}
           age={state.famille.membre1.age}
