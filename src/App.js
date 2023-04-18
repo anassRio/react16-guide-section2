@@ -55,6 +55,10 @@ function App(props) {
     description = <p>Je suis un chat</p>;
   }
 
+  const listOfMembers = Object.keys(famille).map((membre) => (
+    <Membre key={membre} nom={famille[membre].nom} age={famille[membre].age} />
+  ));
+
   return (
     // utilisé le Fragment pour envelopper le HTML a render
     <Fragment>
@@ -71,21 +75,16 @@ function App(props) {
           onChange={handelChangeAge}
           type="number"
         ></input>
-        <Membre
-          nom={state.famille.membre1.nom}
-          age={state.famille.membre1.age}
-        />
-        <Membre
-          nom={state.famille.membre2.nom}
-          age={state.famille.membre2.age}
-        />
-        <Membre nom={state.famille.membre3.nom} age={state.famille.membre3.age}>
+        {listOfMembers}
+
+        {/*<Membre nom={state.famille.membre3.nom} age={state.famille.membre3.age}>
           {description}
           <button onClick={handelShowDescription}>
             {" "}
             {isDetailShowing ? "Masquer" : "Montrer"}
           </button>
-        </Membre>
+        </Membre>*/}
+
         <Button vieillir={() => handleClickVieillir(2)} />
       </div>
     </Fragment>
