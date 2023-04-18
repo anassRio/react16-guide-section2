@@ -1,6 +1,7 @@
 import "./App.css";
 import { Fragment, useState } from "react";
 import Membre from "./components/Membre";
+import Button from "./components/Button";
 
 const famille = {
   membre1: {
@@ -19,9 +20,9 @@ const famille = {
 
 function App(props) {
   const [state, setState] = useState({ famille });
-  const handleClickViellir = () => {
+  const handleClickVieillir = (num) => {
     const famille = { ...state.famille };
-    famille.membre1.age += 1;
+    famille.membre1.age += num;
     setState({ famille });
   };
   return (
@@ -40,8 +41,7 @@ function App(props) {
         <Membre nom={state.famille.membre3.nom} age={state.famille.membre3.age}>
           <p>Je suis un chat</p>
         </Membre>
-
-        <button onClick={handleClickViellir}>Viellir</button>
+        <Button vieillir={() => handleClickVieillir(2)}></Button>
       </div>
     </Fragment>
   );
