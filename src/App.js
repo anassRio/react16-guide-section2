@@ -20,6 +20,7 @@ const famille = {
 
 function App(props) {
   const [state, setState] = useState({ famille });
+  const [isDetailShowing, setIsDetailShowing] = useState(false);
 
   const handleClickVieillir = (num) => {
     const famille = { ...state.famille };
@@ -39,6 +40,14 @@ function App(props) {
     const age = parseInt(event.target.value);
     famille.membre1.age = age;
     setState({ famille });
+  };
+
+  const handelShowDescription = () => {
+    console.log(isDetailShowing);
+    //setIsDetailShowing(isDetailShowing ? false : true);
+
+    const isShow = !isDetailShowing;
+    setIsDetailShowing(isShow);
   };
 
   return (
@@ -67,9 +76,13 @@ function App(props) {
           age={state.famille.membre2.age}
         />
         <Membre nom={state.famille.membre3.nom} age={state.famille.membre3.age}>
-          <p>Je suis un chat</p>
+          {isDetailShowing ? <p>Je suis un chat</p> : null}
+          <button onClick={handelShowDescription}>
+            {" "}
+            {isDetailShowing ? "Masquer" : "Montrer"}
+          </button>
         </Membre>
-        <Button vieillir={() => handleClickVieillir(2)}></Button>
+        <Button vieillir={() => handleClickVieillir(2)} />
       </div>
     </Fragment>
   );
